@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+     
+    <h:head>
+    </h:head>
+ 
+    <h:body>
+    
+    	<p:button outcome="index" value="Back" />
+    	
+    	<br /><br />
+    	
+    	<h:form>
+    	
+    		<p:panel header="Create new contact" id="panel" >
+    	
+    			<h:panelGrid columns="3">
+    		
+    				<h:outputLabel for="firstName" value="First name :" />
+    				<p:inputText id="firstName" value="#{ contactBean.firstName }" style="width:150px;" 
+    				                                                               required="true" 
+    				                                                               requiredMessage="First name is required !" >
+    					<f:validator validatorId="nameValidator" />
+    				</p:inputText>
+    				<p:message for="firstName" />
+    			
+    				<h:outputLabel for="lastName" value="Last name :" />
+    				<p:inputText id="lastName" value="#{ contactBean.lastName }" style="width:150px;" 
+    				                                                             required="true" 
+    				                                                             requiredMessage="Last name is required !" >
+    					<f:validator  validatorId="nameValidator" />
+    				</p:inputText>
+    				<p:message for="lastName" />
+    			
+    				<h:outputLabel for="email" value="Email :" />
+    				<p:inputText id="email" value="#{ contactBean.email }" style="width:250px;" 
+    				                                                       required="true" 
+    				                                                       requiredMessage="Email address is required !" >
+    					<f:validator validatorId="emailValidator" />
+    				</p:inputText>
+    				<p:message for="email" />
+    			
+    				<p:commandButton value="Create" update="panel" action="#{ contactController.createContact( contactBean ) }" />
+    			    		
+    			</h:panelGrid>
+    		
+    		</p:panel>
+    	
+    	</h:form>
+    	    
+    </h:body>
+    
+</html>

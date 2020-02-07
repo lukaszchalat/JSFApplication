@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+     
+	<f:metadata>
+		<f:event listener="#{ contactController.getAllContacts() }" type="preRenderView" />
+	</f:metadata>
+     
+    <h:head>
+    </h:head>
+ 
+    <h:body>
+    	
+    	<p:button outcome="createContact?faces-redirect=true" value="Create new contact"></p:button>
+    	
+    	<br /><br />
+    	
+    	<h:form>
+    	
+    	<p:dataTable var="contact" value="#{ contactController.contacts }" >
+    		
+    		<p:column headerText="Firstname" >
+    			<h:outputText value="#{ contact.firstName }" />
+    		</p:column>
+    		
+    		<p:column headerText="Lastname" >
+    			<h:outputText value="#{ contact.lastName }" />
+    		</p:column>
+    		
+    		<p:column headerText="Email" >
+    			<h:outputText value="#{ contact.email }" />
+    		</p:column>
+    		
+    		<p:column headerText="Edit"	>
+    			<p:commandButton value="Edit" action="#{ contactController.editContact( contact.id ) }" />
+    		</p:column>
+    		
+    		<p:column headerText="Delete"	>
+    			<p:commandButton value="Delete" action="#{ contactController.deleteContact( contact ) }" />
+    		</p:column>
+    		
+    	</p:dataTable>
+    	
+    	</h:form>
+    	    
+
+    </h:body>
+    
+</html>
